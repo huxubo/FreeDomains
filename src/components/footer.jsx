@@ -33,7 +33,7 @@ export function Footer() {
                             <h5 className="text-[#FF6B35] font-bold text-xs uppercase tracking-wide mb-1">Verified Emails</h5>
                             <p className="text-[#E5E3DF] text-xs font-mono">support@stackryze.com</p>
                             <p className="text-[#E5E3DF] text-xs font-mono">reportabuse@stackryze.com</p>
-                            <p className="text-[#E5E3DF] text-xs font-mono">sudheer@indevs.in <span className="text-[#6B6B6B]">(Founder)</span></p>
+                            <p className="text-[#E5E3DF] text-xs font-mono">sudheer@stackryze.com <span className="text-[#6B6B6B]">(Founder)</span></p>
                             <p className="text-[#E5E3DF] text-xs font-mono">no-reply@stackryze.com</p>
                             <p className="text-[#6B6B6B] text-[10px] max-w-sm mt-2 italic leading-relaxed">
                                 Note: We don't send any messages from any other domains or prefixes whatsoever.
@@ -83,7 +83,7 @@ export function Footer() {
                         © 2025 Indevs. Open source and proud of it.
                     </p>
                     <p className="text-[10px] text-[#E5E3DF] text-center md:text-right">
-                        A project by <a href="https://sudheerbhuvana.in" target="_blank" rel="noreferrer" className="font-bold hover:text-[#FF6B35] transition-colors">Sudheer Bhuvana</a>
+                        A project by <a href="https://stackryze.com" target="_blank" rel="noreferrer" className="font-bold text-white hover:text-[#FF6B35] transition-colors">Stackryze</a>
                     </p>
                 </div>
 
