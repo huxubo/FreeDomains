@@ -2,97 +2,150 @@ import { LegalLayout } from "@/layouts/LegalLayout";
 
 export function Abuse() {
     return (
-        <LegalLayout title="Abuse Policy" date="December 2025">
+        <LegalLayout title="Abuse Reporting & Enforcement" date="January 7, 2026">
             <p className="lead">
-                At <strong>Indevs.in</strong>, we have a zero-tolerance policy for abuse, malicious behavior, or illegal activity. We are committed to maintaining a safe, transparent, and developer-friendly environment while protecting the integrity of the internet.
+                <strong>Stackryze Domains</strong> (operated by Stackryze, a registered MSME in India) is committed to maintaining a safe, secure, and abuse-free platform. We take all reports of misuse, illegal activity, or policy violations seriously and respond promptly.
+            </p>
+            <p className="font-medium">
+                This policy is governed by and construed in accordance with the laws of India.
             </p>
             <p>
-                This page outlines how to report abuse and how we handle such reports.
+                We aim to act fairly and proportionately, while prioritizing security, legal compliance, and user safety.
             </p>
 
-            <h3>1. Our Commitment</h3>
+            <h3>1. Abuse Policy</h3>
             <p>
-                Indevs.in exists to support creativity, learning, and open collaboration. However, the service must not be used to distribute malware, engage in phishing, host harmful content, or otherwise violate laws or our <a href="/aup" className="text-[#FF6B35] hover:underline">Acceptable Use Policy</a>.
-            </p>
-            <p>
-                We take abuse reports seriously and investigate every case as quickly and fairly as possible.
-            </p>
-
-            <div className="bg-red-50 border-l-4 border-red-500 p-6 md:p-8 rounded-r-xl my-10 shadow-sm">
-                <h3 className="!mt-0 !text-red-700 flex items-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                    </svg>
-                    2. Report Abuse
-                </h3>
-                <p className="!text-red-900 font-medium">
-                    If you believe a subdomain under *.indevs.in is being used for phishing, malware distribution, impersonation, or any other form of abuse, please report it immediately.
-                </p>
-                <div className="bg-white/50 p-4 rounded-lg border border-red-100 my-6">
-                    <p className="!mb-0 text-xl font-bold flex items-center gap-2 text-red-700">
-                        <span></span>
-                        <span className="opacity-75">Email:</span>
-                        <a href="mailto:reportabuse@stackryze.com" className="!text-red-700 underline decoration-red-300 hover:decoration-red-700">reportabuse@stackryze.com</a>
-                    </p>
-                </div>
-                <p className="!mb-3 !text-red-900">
-                    When submitting a report, please include:
-                </p>
-                <ul className="!text-red-800 !mb-4 marker:text-red-400">
-                    <li>The full URL or subdomain (e.g., example.indevs.in)</li>
-                    <li>A brief description of the issue or suspicious behavior</li>
-                    <li>Any evidence or screenshots supporting your claim</li>
-                </ul>
-                <p className="!mb-0 text-sm italic text-red-700/80">
-                    Incomplete reports may take longer to verify, so please provide as much detail as possible.
-                </p>
-            </div>
-
-            <h3>3. How We Handle Reports</h3>
-
-            <p><strong>a. Review and Investigation</strong></p>
-            <p>
-                All abuse reports are reviewed within 24 hours of submission. Our volunteer moderation team evaluates the evidence, checks DNS and hosting activity, and determines whether the subdomain violates our Terms or Acceptable Use Policy.
-            </p>
-
-            <p><strong>b. Enforcement Actions</strong></p>
-            <p>
-                If a violation is confirmed, we take immediate action. Possible actions include:
+                Stackryze maintains a strict policy for abuse and misuse:
             </p>
             <ul>
-                <li>Temporary or permanent suspension of the subdomain</li>
-                <li>Revocation of the domain record and removal from DNS</li>
-                <li>Blacklisting of the account or IP responsible for abuse</li>
+                <li>Malware, phishing, or deceptive content</li>
+                <li>Illegal activities, fraud, or scams</li>
+                <li>Copyright infringement or trademark abuse</li>
+                <li>Spam, DDoS attacks, or network abuse</li>
+                <li>Adult content, hate speech, or violence</li>
             </ul>
             <p>
-                Severe or repeated abuse may result in permanent denial of future registrations.
+                Violations result in immediate suspension or permanent termination without prior notice or opportunity to cure.
             </p>
 
-            <p><strong>c. Transparency and Privacy</strong></p>
+            <h3>2. How to Report Abuse</h3>
+            <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg my-8">
+                <p className="font-bold text-red-900 mb-2 text-lg">Primary Abuse Contact:</p>
+                <a href="mailto:reportabuse@stackryze.com" className="text-2xl font-bold text-red-700 hover:underline block mb-4">
+                    reportabuse@stackryze.com
+                </a>
+                <p className="text-red-800 text-sm mb-4">
+                    <strong>Response Time:</strong> All abuse reports are reviewed within <span className="font-bold">24 hours</span>. Critical threats (active phishing, malware) are escalated immediately.
+                </p>
+                <p className="text-red-800 text-sm font-bold">
+                    When reporting, please include:
+                </p>
+                <ul className="text-red-800 text-sm list-disc pl-6 mt-2">
+                    <li>Full subdomain URL (e.g., example.stackryze.in)</li>
+                    <li>Description of the violation or harmful content</li>
+                    <li>Evidence (screenshots, logs, or relevant links)</li>
+                    <li>Your contact information for follow-up</li>
+                </ul>
+            </div>
+
+            <h3>3. What Happens After You Report</h3>
+            <p><strong>Step 1: Verification</strong></p>
             <p>
-                We acknowledge all valid reports once received. However, due to privacy and operational policies, we may not share detailed outcomes of investigations with reporters. Our focus is on quickly neutralizing threats and protecting users across the platform.
+                Our team reviews the report and investigates the subdomain. We may request additional information if needed.
             </p>
 
-            <h3>4. False or Malicious Reports</h3>
+            <p><strong>Step 2: Action</strong></p>
             <p>
-                Submitting false, misleading, or bad-faith abuse reports is itself a violation of our Terms of Service. We may restrict or block individuals who repeatedly submit baseless complaints to disrupt or defame legitimate users.
+                If the violation is confirmed, we will:
+            </p>
+            <ul>
+                <li><strong>Immediately suspend</strong> the subdomain to prevent further harm</li>
+                <li><strong>Contact the subdomain owner</strong> (when feasible and non-urgent)</li>
+                <li><strong>Permanently terminate</strong> the subdomain for severe or repeat violations</li>
+                <li><strong>Report to authorities</strong> when illegal activity is detected</li>
+            </ul>
+
+            <p><strong>Step 3: Follow-Up</strong></p>
+            <p>
+                We will notify the reporter of the action taken (when appropriate and without violating user privacy). Serious cases may be escalated to law enforcement or security organizations.
             </p>
 
-            <h3>5. Collaboration with Authorities</h3>
+            <h3>4. Types of Violations We Act On</h3>
+            <p><strong>Security Threats (Immediate Action)</strong></p>
+            <ul>
+                <li>Active phishing or credential harvesting</li>
+                <li>Malware distribution or command-and-control servers</li>
+                <li>DDoS infrastructure or botnet operations</li>
+            </ul>
+
+            <p><strong>Legal Violations</strong></p>
+            <ul>
+                <li>Copyright or trademark infringement</li>
+                <li>Illegal content (as defined by Indian law)</li>
+                <li>Fraud, scams, or deceptive practices</li>
+            </ul>
+
+            <p><strong>Policy Violations</strong></p>
+            <ul>
+                <li>Adult or pornographic content</li>
+                <li>Hate speech or violent extremism</li>
+                <li>Spam or unsolicited bulk messaging</li>
+                <li>Resource abuse or bandwidth exploitation</li>
+            </ul>
+
+            <h3>5. Law Enforcement Cooperation</h3>
+            <p className="font-bold">
+                Stackryze actively cooperates with:
+            </p>
+            <ul>
+                <li>Indian law enforcement agencies and CERT-In</li>
+                <li>International cybersecurity organizations</li>
+                <li>Abuse prevention networks and threat intelligence groups</li>
+            </ul>
             <p>
-                In serious cases involving criminal activity, phishing networks, or threats to public safety, we may cooperate with law enforcement, hosting providers, or relevant cybersecurity agencies to resolve the issue swiftly and responsibly.
+                We will provide user data, logs, and evidence when legally required or when serious criminal activity is suspected. Users will NOT be notified when data is shared with law enforcement where legally prohibited or not required.
             </p>
 
-            <h3>6. Contact</h3>
+            <h3>6. User Liability</h3>
             <p>
-                For all abuse-related inquiries, reach us at:<br />
-                <a href="mailto:reportabuse@stackryze.com" className="text-[#FF6B35] hover:underline">reportabuse@stackryze.com</a>
+                Subdomain owners are solely responsible for:
+            </p>
+            <ul>
+                <li>All content and activity associated with their subdomain</li>
+                <li>Legal claims, damages, or enforcement actions arising from misuse</li>
+                <li>Any violations of law or our policies</li>
+            </ul>
+            <p>
+                Stackryze is not liable for user content, actions, or damages. Users agree to indemnify Stackryze from all claims arising from their subdomain use.
+            </p>
+
+            <h3>7. False Reports</h3>
+            <p>
+                Submitting false, malicious, or abusive reports may result in:
+            </p>
+            <ul>
+                <li>Your own account termination</li>
+                <li>Being blocked from reporting future issues</li>
+                <li>Legal action may be pursued in cases of defamation, harassment, or abuse of the reporting system</li>
+            </ul>
+
+            <h3>8. Additional Contacts</h3>
+            <ul className="list-none pl-0 space-y-2">
+                <li>Security Vulnerabilities: <a href="mailto:security@stackryze.com" className="text-[#FF6B35] hover:underline">security@stackryze.com</a></li>
+                <li>Legal Inquiries: <a href="mailto:legal@stackryze.com" className="text-[#FF6B35] hover:underline">legal@stackryze.com</a></li>
+                <li>General Support: <a href="mailto:support@stackryze.com" className="text-[#FF6B35] hover:underline">support@stackryze.com</a></li>
+            </ul>
+
+            <h3>9. Transparency and Accountability</h3>
+            <p>
+                Stackryze is committed to operating transparently while protecting user privacy. We may publish aggregated abuse statistics or threat intelligence reports to benefit the broader security community.
             </p>
             <p>
-                Please use this email only for abuse-related matters. For general questions or support, contact <a href="mailto:support@stackryze.com" className="text-[#FF6B35] hover:underline">support@stackryze.com</a> instead.
+                Stackryze reserves the right to take any action it deems necessary to protect its infrastructure, users, and the public.
             </p>
-            <p>
-                <strong>Indevs.in</strong> is committed to keeping the web safe, open, and trustworthy for all users. Together, we can maintain a secure environment for developers and learners around the world.
+
+            <p className="mt-8">
+                Thank you for helping us maintain a safe and trusted platform. Together, we can keep Stackryze Domains secure for legitimate users worldwide.
             </p>
         </LegalLayout>
     );
