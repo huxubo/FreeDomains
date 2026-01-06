@@ -115,13 +115,13 @@ export default function DashboardLayout() {
                 />
             </div>
 
-            <div className="p-6 border-t border-[#E5E3DF] mt-auto">
+            <div className="p-6 border-t border-[#E5E3DF] bg-white">
                 <button
                     onClick={() => {
                         setSidebarOpen(false);
                         logout();
                     }}
-                    className="w-full flex items-center gap-3 px-4 py-3 rounded-lg font-bold text-[#E63946] hover:bg-[#FFF5F5] transition-colors text-sm"
+                    className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-lg font-bold text-white bg-[#E63946] hover:bg-[#d32f2f] transition-colors text-sm"
                 >
                     <LogOut className="w-5 h-5" />
                     <span>Sign Out</span>
