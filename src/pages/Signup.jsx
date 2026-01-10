@@ -1,12 +1,14 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useToast } from "../hooks/use-toast";
 import { subdomainAPI } from "../lib/api";
-import { Loader2, CheckCircle } from "lucide-react";
+import { Loader2, CheckCircle, Info } from "lucide-react";
 import { Turnstile } from '@marsidev/react-turnstile';
 
 export default function Signup() {
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const message = searchParams.get('message');
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -14,6 +16,15 @@ export default function Signup() {
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const { toast } = useToast();
+
+    useEffect(() => {
+        if (message === 'github_closed') {
+            toast({
+                title: "GitHub Signups Closed",
+                description: "New accounts must use Email/Password. Existing GitHub users can still login.",
+            });
+        }
+    }, [message, toast]);
 
     const handleSignup = async (e) => {
         e.preventDefault();
