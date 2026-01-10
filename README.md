@@ -41,7 +41,7 @@ Our Discord community is the place for:
 - 📢 Updates and announcements
 
 ### GitHub Issues
-**Repository:** https://github.com/sudheerbhuvana/indevs.in/issues
+**Repository:** https://github.com/stackryze/FreeDomains/issues
 
 For formal tracking, please use GitHub Issues for:
 - 🐛 Bug reports with detailed reproduction steps

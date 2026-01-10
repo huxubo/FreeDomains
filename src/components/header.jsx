@@ -47,7 +47,7 @@ export function Header() {
               Discord
             </a>
             <a
-              href="https://github.com/sudheerbhuvana/indevs.in"
+              href="https://github.com/stackryze/FreeDomains"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#1A1A1A] hover:text-[#FF6B35] transition-colors duration-150 font-medium text-sm lg:text-base"

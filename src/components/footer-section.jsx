@@ -68,7 +68,7 @@ export function Footer() {
                         <div>
                             <h4 className="font-bold text-base mb-3 text-white">Connect</h4>
                             <ul className="space-y-2 text-sm">
-                                <li><a href="https://github.com/sudheerbhuvana/indevs.in" target="_blank" rel="noreferrer" className="text-[#E5E3DF] hover:text-[#FF6B35] transition-colors">GitHub</a></li>
+                                <li><a href="https://github.com/stackryze/FreeDomains" target="_blank" rel="noreferrer" className="text-[#E5E3DF] hover:text-[#FF6B35] transition-colors">GitHub</a></li>
                                 <li><a href="https://github.com/sponsors/sudheerbhuvana" target="_blank" rel="noreferrer" className="text-[#E5E3DF] hover:text-[#FF6B35] transition-colors">Sponsor ❤️</a></li>
                                 <li><a href="https://twitter.com" target="_blank" rel="noreferrer" className="text-[#E5E3DF] hover:text-[#FF6B35] transition-colors">Twitter</a></li>
                                 <li><a href="https://discord.gg/wr7s97cfM7" target="_blank" rel="noreferrer" className="text-[#E5E3DF] hover:text-[#FF6B35] transition-colors">Discord Community</a></li>

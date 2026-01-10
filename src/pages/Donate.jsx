@@ -90,7 +90,7 @@ export function Donate() {
                                     <strong className="text-[#1A1A1A]">Can't donate?</strong> You can still help:
                                 </p>
                                 <p className="text-sm text-[#4A4A4A]">
-                                    ⭐ <a href="https://github.com/sudheerbhuvana/indevs.in" target="_blank" rel="noreferrer" className="font-bold text-[#1A1A1A] underline hover:text-[#FF6B35]">Star us on GitHub</a> •
+                                    ⭐ <a href="https://github.com/stackryze/FreeDomains" target="_blank" rel="noreferrer" className="font-bold text-[#1A1A1A] underline hover:text-[#FF6B35]">Star us on GitHub</a> •
                                     📢 Share with friends •
                                     🐛 Report bugs •
                                     💻 Contribute code

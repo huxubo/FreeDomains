@@ -44,7 +44,7 @@ export function About() {
                             We believe that cost shouldn't be a barrier to shipping code. That's why we built this platform—to provide free `.indevs.in` subdomains to anyone who needs them. No credit cards, no hidden fees.
                         </p>
                         <a
-                            href="https://github.com/sudheerbhuvana/indevs.in"
+                            href="https://github.com/stackryze/FreeDomains"
                             target="_blank"
                             rel="noreferrer"
                             className="inline-flex items-center gap-2 font-bold text-[#1A1A1A] border-b-2 border-[#1A1A1A] hover:text-[#FF6B35] hover:border-[#FF6B35] transition-colors"
