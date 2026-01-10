@@ -64,9 +64,6 @@ export default function Login() {
                     break;
             }
 
-            console.log('[Login] Showing toast:', { title, description });
-
-            // Set error banner for inline display
             setErrorBanner({ title, description });
 
             toast({
@@ -90,7 +87,6 @@ export default function Login() {
                 window.location.href = '/dashboard';
             }
         } catch (err) {
-            console.error('Login error:', err);
             toast({
                 variant: "destructive",
                 title: "Login Failed",

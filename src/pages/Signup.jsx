@@ -49,9 +49,6 @@ export default function Signup() {
             });
             navigate(`/verify-email?email=${encodeURIComponent(email)}`);
         } catch (err) {
-            console.error('Signup error:', err);
-            console.error('Error response:', err.response?.data);
-
             const errorMessage = err.response?.data?.error || err.message || "Could not create account. Please try again.";
 
             toast({

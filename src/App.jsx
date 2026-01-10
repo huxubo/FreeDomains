@@ -14,7 +14,6 @@ import VerifyEmail from './pages/VerifyEmail';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import SetPassword from './pages/SetPassword';
-// import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
 import DashboardLayout from './layouts/DashboardLayout';
 import Overview from './pages/dashboard/Overview';

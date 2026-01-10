@@ -1,5 +1,5 @@
 import { Header } from "@/components/header";
-import { FooterSection } from "@/components/footer-section";
+import { Footer } from "@/components/footer-section";
 import {
     Heart,
     Globe,
@@ -117,7 +117,7 @@ export function About() {
                 </div>
             </section>
 
-            <FooterSection />
+            <Footer />
         </div>
     );
 }

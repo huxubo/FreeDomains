@@ -2,7 +2,7 @@ import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero-section";
 import { FeatureCards } from "@/components/feature-cards";
 import { FAQSection } from "@/components/faq-section";
-import { FooterSection } from "@/components/footer-section";
+import { Footer } from "@/components/footer-section";
 import { PSLAnnouncement } from "@/components/PSLAnnouncement";
 
 export function Landing() {
@@ -15,7 +15,7 @@ export function Landing() {
                 <FeatureCards />
                 <FAQSection />
             </main>
-            <FooterSection />
+            <Footer />
         </div>
     );
 }
