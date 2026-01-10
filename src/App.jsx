@@ -32,9 +32,10 @@ const Docs = () => <div className="p-10 min-h-screen bg-[#FFF8F0] pt-32"><h1 cla
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const location = window.location.pathname;
+  const search = window.location.search; // Preserve query params
 
   if (loading) return <div className="flex items-center justify-center min-h-screen bg-[#FFF8F0] font-bold text-xl">Loading...</div>;
-  if (!user) return <Navigate to="/login" replace />;
+  if (!user) return <Navigate to={`/login${search}`} replace />; // Preserve ?error=... params
 
   // 1. Force Password Set Flow
   if (user && !user.hasPassword) {
