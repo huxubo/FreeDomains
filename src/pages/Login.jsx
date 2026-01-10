@@ -85,16 +85,16 @@ export default function Login() {
         setIsLoading(true);
         try {
             const res = await subdomainAPI.post('/auth/email/login', { email, password });
-            if (res.data.success) {
-                // Check auth handles redirect likely, or we do it manually
-                // Force a reload or checkAuth to update context
+            if (res.success) {
+                // Force full page reload to refresh auth context
                 window.location.href = '/dashboard';
             }
         } catch (err) {
+            console.error('Login error:', err);
             toast({
                 variant: "destructive",
                 title: "Login Failed",
-                description: err.response?.data?.error || "Invalid credentials",
+                description: err.message || "Invalid credentials",
             });
         } finally {
             setIsLoading(false);
