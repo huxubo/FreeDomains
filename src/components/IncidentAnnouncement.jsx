@@ -12,7 +12,7 @@ export function IncidentAnnouncement() {
                 document.documentElement.style.setProperty('--incident-height', `${height}px`);
                 console.log('Incident banner height:', height);
             }
-        };
+        }; 0
 
         // Initial update
         updateHeight();
@@ -36,7 +36,7 @@ export function IncidentAnnouncement() {
                         <div className="flex items-center gap-3 flex-1 min-w-0">
                             <AlertTriangle className="w-5 h-5 text-red-600 flex-shrink-0" />
                             <p className="text-sm font-medium text-red-900">
-                                <span className="font-bold">Incident Update:</span> indevs.in is temporarily unreachable.
+                                <span className="font-bold">Resolution Restored.</span> Scheduled DNS Maintenance: Jan 13, 00:00 IST - 21:00 IST.
                                 <button
                                     onClick={() => setShowModal(true)}
                                     className="ml-2 text-red-700 hover:text-red-900 underline font-bold"
@@ -60,8 +60,8 @@ export function IncidentAnnouncement() {
                                     <AlertTriangle className="w-6 h-6 text-red-600" />
                                 </div>
                                 <div>
-                                    <h2 className="text-2xl font-bold text-[#1A1A1A]">Incident Update</h2>
-                                    <p className="text-sm text-red-800 mt-1">Service Disruption Notice</p>
+                                    <h2 className="text-2xl font-bold text-[#1A1A1A]">Service Restored & Maintenance</h2>
+                                    <p className="text-sm text-red-800 mt-1">Scheduled Maintenance</p>
                                 </div>
                             </div>
                             <button
@@ -76,21 +76,21 @@ export function IncidentAnnouncement() {
                         {/* Content */}
                         <div className="p-6 space-y-4 text-[#1A1A1A]">
                             <p className="text-base leading-relaxed">
-                                <strong>indevs.in</strong> is temporarily unreachable due to a registrar-side hold affecting DNS resolution.
+                                <strong>DNS resolution has been fully restored.</strong> Please note that we have scheduled essential DNS maintenance for <strong>Jan 13, from 00:00 IST to 21:00 IST</strong>.
                             </p>
 
-                            <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
-                                <p className="text-sm text-green-900">
-                                    <strong>Nameservers and backend infrastructure are unaffected.</strong>
+                            <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg">
+                                <p className="text-sm text-amber-900">
+                                    During this window, you may experience brief periods of instability as we complete these updates. <strong>No action is required from your side.</strong>
                                 </p>
                             </div>
 
                             <p className="text-base leading-relaxed">
-                                We are in contact with the registrar and expect service restoration soon.
+                                We are a student team working alone on this project. We are on our vacations, but we are working hard to ensure everything is fixed despite that. We appreciate your understanding and support.
                             </p>
 
                             <p className="text-sm font-medium text-gray-600">
-                                Thanks for your patience.
+                                Thanks for being with us.
                             </p>
                         </div>
 
