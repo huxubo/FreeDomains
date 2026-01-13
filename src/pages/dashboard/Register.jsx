@@ -55,6 +55,13 @@ export default function Register() {
             return;
         }
 
+        // Block Punycode domains (xn-- prefix)
+        if (domainLower.startsWith('xn--')) {
+            setErrorMsg("Punycode/internationalized domains (starting with 'xn--') are not supported. Please use a standard ASCII domain name.");
+            setIsAvailable(false);
+            return;
+        }
+
         // Check for non-ASCII characters (Punycode/IDN not supported)
         if (!/^[\x00-\x7F]*$/.test(domainLower)) {
             setErrorMsg("Internationalized domains (non-ASCII characters) are not supported. Please use only English letters, numbers, and hyphens.");
