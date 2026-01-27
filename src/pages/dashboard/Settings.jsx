@@ -1,8 +1,57 @@
+import { useState } from "react";
 import { useAuth } from "@/context/auth-context";
-import { Shield, Mail } from "lucide-react";
+import { Shield, Mail, Edit2, Check, X, Loader2 } from "lucide-react";
+import api from "@/lib/api";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner"; // Assuming sonner is used, typical in shadcn/vite apps, else fallback to alert or custom
 
 export default function Settings() {
-    const { user } = useAuth();
+    const { user, logout } = useAuth(); // Assuming logout might be useful or refetch user
+    const navigate = useNavigate();
+
+    const [isEditingEmail, setIsEditingEmail] = useState(false);
+    const [newEmail, setNewEmail] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const handleEmailUpdate = async () => {
+        if (!newEmail || !newEmail.includes('@')) {
+            toast.error("Please enter a valid email");
+            return;
+        }
+
+        if (newEmail.toLowerCase() === user.email.toLowerCase()) {
+            setIsEditingEmail(false);
+            return;
+        }
+
+        try {
+            setLoading(true);
+            const res = await api.post('/auth/email/change-email', { newEmail });
+
+            if (res.data.success) {
+                toast.success(res.data.message);
+                // Redirect to verification, or user context update might handle it
+                // Ideally, force them to verify page
+                window.location.href = `/verify-email?email=${encodeURIComponent(newEmail)}`;
+            }
+        } catch (error) {
+            console.error("Email update failed", error);
+
+            // Handle GitHub re-authentication requirement
+            if (error.response?.data?.error === 'github_reauth_required') {
+                toast.error("Please re-authenticate with GitHub first");
+                // Redirect to GitHub OAuth
+                setTimeout(() => {
+                    window.location.href = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/auth/github`;
+                }, 1500);
+                return;
+            }
+
+            toast.error(error.response?.data?.error || "Failed to update email");
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <div className="space-y-8 max-w-4xl">
@@ -14,7 +63,7 @@ export default function Settings() {
                     alt="Profile"
                     className="w-32 h-32 rounded-full border-4 border-[#FFD23F] shadow-[4px_4px_0px_0px_#1A1A1A]"
                 />
-                <div className="text-center md:text-left flex-1 space-y-4">
+                <div className="text-center md:text-left flex-1 space-y-4 w-full">
                     <div>
                         <h3 className="text-3xl font-bold text-[#1A1A1A]">{user?.name || "User"}</h3>
                         <p className="text-lg text-[#4A4A4A] font-mono">@{user?.username || user?.email?.split('@')[0]}</p>
@@ -27,7 +76,64 @@ export default function Settings() {
                         {user?.location && <div className="flex items-center gap-2">📍 {user.location}</div>}
                         {user?.blog && <div className="flex items-center gap-2">🔗 <a href={user.blog.startsWith('http') ? user.blog : `https://${user.blog}`} target="_blank" rel="noreferrer" className="hover:underline">{user.blog}</a></div>}
                         {user?.twitterUsername && <div className="flex items-center gap-2">🐦 @{user.twitterUsername}</div>}
-                        {user?.email && <div className="flex items-center gap-2">✉️ {user.email}</div>}
+
+                        {/* Email Section with Edit Capability */}
+                        <div className="flex items-center gap-2 col-span-1 md:col-span-2 mt-2 bg-gray-50 p-3 rounded-lg border border-dashed border-gray-300">
+                            <span className="flex-shrink-0">✉️</span>
+
+                            {isEditingEmail ? (
+                                <div className="flex items-center gap-2 flex-1">
+                                    <input
+                                        type="email"
+                                        value={newEmail}
+                                        onChange={(e) => setNewEmail(e.target.value)}
+                                        placeholder="Enter new email"
+                                        className="flex-1 px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#E63946]"
+                                        autoFocus
+                                    />
+                                    <button
+                                        onClick={handleEmailUpdate}
+                                        disabled={loading}
+                                        className="p-1 bg-green-100 text-green-700 rounded hover:bg-green-200"
+                                        title="Save"
+                                    >
+                                        {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
+                                    </button>
+                                    <button
+                                        onClick={() => { setIsEditingEmail(false); setNewEmail(""); }}
+                                        className="p-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
+                                        title="Cancel"
+                                    >
+                                        <X className="w-4 h-4" />
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className="flex items-center gap-2 flex-1 group">
+                                    <span className="font-mono">{user?.email}</span>
+                                    {/* Only show edit for GitHub noreply users */}
+                                    {(user?.githubId && user?.email?.includes('noreply.github.com')) && (
+                                        <button
+                                            onClick={() => { setIsEditingEmail(true); setNewEmail(""); }}
+                                            className="opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-gray-200 rounded text-gray-500"
+                                            title="Change Email (GitHub noreply)"
+                                        >
+                                            <Edit2 className="w-3 h-3" />
+                                        </button>
+                                    )}
+
+                                    {!user?.isEmailVerified && (
+                                        <span className="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded-full">Unverified</span>
+                                    )}
+                                    {user?.email?.includes('noreply.github.com') && (
+                                        <span className="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                                            Action Required: Change Email
+                                        </span>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+
                     </div>
                 </div>
             </div>
