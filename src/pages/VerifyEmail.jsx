@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { subdomainAPI } from "../lib/api";
 import { useToast } from "../hooks/use-toast";
-import { Loader2, MailCheck } from "lucide-react";
+import { Loader2, MailCheck, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function VerifyEmail() {
@@ -13,6 +13,9 @@ export default function VerifyEmail() {
     const [isResending, setIsResending] = useState(false);
     const { toast } = useToast();
     const navigate = useNavigate();
+
+    // Check if this is a noreply email
+    const isNoreplyEmail = email && email.includes('noreply.github.com');
 
     useEffect(() => {
         if (!email) {
@@ -110,45 +113,79 @@ export default function VerifyEmail() {
             </Link>
 
             <div className="w-full max-w-md bg-white border-2 border-[#E5E3DF] p-8 md:p-10 rounded-xl text-center">
-                <MailCheck className="w-16 h-16 text-orange-500 mx-auto mb-4" />
-                <h1 className="text-2xl font-bold text-[#1A1A1A] mb-2">Check your inbox</h1>
-                <p className="text-[#4A4A4A] mb-6">
-                    We've sent a 6-digit verification code to <br />
-                    <strong className="text-black">{email}</strong>
-                </p>
+                {/* NOREPLY EMAIL DETECTION */}
+                {isNoreplyEmail ? (
+                    <>
+                        <MailCheck className="w-16 h-16 text-red-500 mx-auto mb-4" />
+                        <h1 className="text-2xl font-bold text-[#1A1A1A] mb-2">Cannot Verify This Email</h1>
 
-                <form onSubmit={handleVerify} className="space-y-4">
-                    <div>
-                        <input
-                            type="text"
-                            required
-                            maxLength={6}
-                            value={otp}
-                            onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))} // Numeric only
-                            className="w-full text-center text-2xl tracking-[0.5em] px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black font-mono"
-                            placeholder="000000"
-                        />
-                    </div>
+                        <div className="bg-red-50 border border-red-200 text-red-900 p-4 rounded-lg text-left mb-6">
+                            <div className="flex gap-3 mb-3">
+                                <AlertCircle className="w-5 h-5 flex-shrink-0 text-red-600 mt-0.5" />
+                                <div>
+                                    <p className="font-bold mb-1">GitHub Noreply Email Detected</p>
+                                    <p className="text-sm">This address cannot receive emails.</p>
+                                </div>
+                            </div>
+                            <p className="text-sm mb-2">Your current email is:</p>
+                            <p className="font-mono text-xs break-all bg-red-100 p-2 rounded">{email}</p>
+                        </div>
 
-                    <button
-                        type="submit"
-                        disabled={isLoading || otp.length < 6}
-                        className="w-full bg-[#1A1A1A] text-white py-3 rounded-lg font-bold hover:shadow-[4px_4px_0px_0px_#FFD23F] transition-all duration-200 disabled:opacity-50"
-                    >
-                        {isLoading ? <span className="flex items-center justify-center gap-2"><Loader2 className="animate-spin w-4 h-4" /> Verifying...</span> : "Verify Email"}
-                    </button>
-                </form>
+                        <div className="space-y-3">
+                            <a
+                                href={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/auth/github`}
+                                className="block w-full bg-[#1A1A1A] text-white py-3 rounded-lg font-bold hover:shadow-[4px_4px_0px_0px_#FFD23F] transition-all duration-200"
+                            >
+                                Login with GitHub to Change Email
+                            </a>
+                            <p className="text-xs text-gray-500">
+                                You'll be redirected to update your email immediately after login
+                            </p>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <MailCheck className="w-16 h-16 text-orange-500 mx-auto mb-4" />
+                        <h1 className="text-2xl font-bold text-[#1A1A1A] mb-2">Check your inbox</h1>
+                        <p className="text-[#4A4A4A] mb-6">
+                            We've sent a 6-digit verification code to <br />
+                            <strong className="text-black">{email}</strong>
+                        </p>
 
-                <div className="mt-6 space-y-2">
-                    <p className="text-xs text-gray-500">Code expires in 10 minutes.</p>
-                    <button
-                        onClick={handleResend}
-                        disabled={isResending}
-                        className="text-sm text-gray-600 hover:text-black hover:underline disabled:opacity-50"
-                    >
-                        {isResending ? "Sending..." : "Didn't receive code? Resend"}
-                    </button>
-                </div>
+                        <form onSubmit={handleVerify} className="space-y-4">
+                            <div>
+                                <input
+                                    type="text"
+                                    required
+                                    maxLength={6}
+                                    value={otp}
+                                    onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))} // Numeric only
+                                    className="w-full text-center text-2xl tracking-[0.5em] px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black font-mono"
+                                    placeholder="000000"
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={isLoading || otp.length < 6}
+                                className="w-full bg-[#1A1A1A] text-white py-3 rounded-lg font-bold hover:shadow-[4px_4px_0px_0px_#FFD23F] transition-all duration-200 disabled:opacity-50"
+                            >
+                                {isLoading ? <span className="flex items-center justify-center gap-2"><Loader2 className="animate-spin w-4 h-4" /> Verifying...</span> : "Verify Email"}
+                            </button>
+                        </form>
+
+                        <div className="mt-6 space-y-2">
+                            <p className="text-xs text-gray-500">Code expires in 10 minutes.</p>
+                            <button
+                                onClick={handleResend}
+                                disabled={isResending}
+                                className="text-sm text-gray-600 hover:text-black hover:underline disabled:opacity-50"
+                            >
+                                {isResending ? "Sending..." : "Didn't receive code? Resend"}
+                            </button>
+                        </div>
+                    </>
+                )}
             </div>
 
             <div className="mt-6 text-center text-sm text-gray-600">
