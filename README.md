@@ -1,63 +1,85 @@
-# 🌐 Claim yourname.indevs.in domain today!
+# 🌐 Claim yourname.indevs.in — Powered by Stackryze Domains
 
-**Join our Discord community:** https://discord.gg/wr7s97cfM7
+**Join our Discord:** https://discord.gg/wr7s97cfM7
 
 ---
 
-Welcome to **indevs.in**, where we believe developers should be able to get online without unnecessary cost or complexity. Whether you're an individual developer, a student, or an organization, we provide free managed subdomains to help you publish your projects with no hidden conditions.
+**Stackryze Domains** runs **indevs.in**, a free managed subdomain service for developers, students, and open-source communities.
 
-With indevs.in, you can register a subdomain and host it using your own infrastructure or any hosting provider of your choice. You remain in full control of your services while we handle subdomain management. Deploy freely, integrate with your preferred stack, and focus on building.
+Claim a domain and point it to any hosting provider or your own infrastructure. You get full ownership and complete control.
+
+**Build fast. Deploy freely. No lock-in.**
+
+---
 
 ## Why indevs.in?
 
-At indevs.in, our mission is to make publishing on the web more accessible for developers. We believe that domain costs and setup friction should not block learning, experimentation, or early-stage projects. Our goal is to provide a simple, reliable platform where developers can establish a presence online regardless of budget.
+Our goal is simple: remove cost and complexity from getting online.
+
+- Free managed domains  
+- Works with any hosting or DNS provider  
+- Built for students, developers, and OSS projects  
+- Transparent, community-driven, and reliable  
 
 ---
 
-## 🌍 Available Domain Extensions
+## 🌍 Available Domains
 
 - **.indevs.in**
 
-_(More extensions coming soon!)_
+*More extensions coming soon.*
+
+---
+
+## 🌐 DNS Infrastructure
+
+Stackryze Domains Namespaces are backed by globally distributed name servers for reliability and low latency:
+
+- **ns1.stackryze.com** — Primary name server (Germany)  
+- **ns2.stackryze.com** — Secondary name server (Hyderabad, India)
+
+---
+
+## ❤️ Sponsors
+
+Supported by organizations that believe in open-source and developer communities.
+
+<div align="center">
+
+<img src="/public/Cloudflare_Logo.png" alt="Cloudflare" height="40" />
+&nbsp;&nbsp;&nbsp;
+<img src="https://ca.insight.com/content/dam/insight-web/logos/partner-logos/white/branded-search/1password.png" alt="1Password" height="48" />
+&nbsp;&nbsp;&nbsp;
+<img src="/public/hetrixtools.png" alt="Hetrix Tools" height="40" />
+&nbsp;&nbsp;&nbsp;
+<img src="https://cdn2.steamgriddb.com/logo/88502646b2293c4aaa173b33afcd40f1.png" alt="Termius" height="40" />
+
+</div>
 
 ---
 
 ## 🚀 Get Started
 
-➡️ **Dashboard:** https://indevs.in  
-📝 **Documentation:** Coming soon
+**Dashboard:** https://domains.stackryze.com   
+**GitHub:** https://github.com/stackryze/FreeDomains/issues  
+**Discord:** https://discord.gg/wr7s97cfM7   
+**Support:** support@stackryze.com  
+## Service Status
+
+Live status and incident updates for all Stackryze services: https://status.stackryze.com
 
 ---
 
-## 💬 Community & Support
-
-### Discord Server
-**Join us:** https://discord.gg/wr7s97cfM7
-
-Our Discord community is the place for:
-- 💬 General discussions and questions
-- 🤝 Quick help and troubleshooting
-- 💡 Sharing ideas and feedback
-- 📢 Updates and announcements
-
-### GitHub Issues
-**Repository:** https://github.com/stackryze/FreeDomains/issues
-
-For formal tracking, please use GitHub Issues for:
-- 🐛 Bug reports with detailed reproduction steps
-- ✨ Feature requests
-- 📝 Documentation improvements
-
-**Workflow:** Feel free to discuss ideas in Discord first, then create a GitHub issue for anything that needs formal tracking or development.
+📧 **Abuse reports:** reportabuse@stackryze.com
 
 ---
 
-## 🚨 Abuse Reporting
+<div align="center">
 
-We take abuse seriously to keep the platform safe.
+<img src="/public/stackryze_logo_white.png" alt="Stackryze Domains" height="48" />
 
-📧 **Email:** reportabuse@stackryze.com
+<br />
 
----
+<strong>Stackryze Domains — a project by Stackryze.</strong>
 
-**We look forward to seeing what you build.** 🚀
+</div>
