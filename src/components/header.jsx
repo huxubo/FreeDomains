@@ -27,6 +27,13 @@ export function Header() {
               </div>
               <span className="text-base sm:text-lg md:text-xl font-bold text-[#1A1A1A] tracking-tight">.in</span>
             </div>
+            <div className="hidden md:block h-6 sm:h-8 w-[1px] bg-[#E5E3DF]"></div>
+            <div className="hidden md:flex items-baseline gap-0.5">
+              <div className="flex items-center font-bold text-xl sm:text-2xl md:text-3xl tracking-tight gap-0.5">
+                <span className="text-[#1A1A1A]">SRYZE</span>
+              </div>
+              <span className="text-base sm:text-lg md:text-xl font-bold text-[#1A1A1A] tracking-tight">.cc</span>
+            </div>
           </a>
         </div>
 
