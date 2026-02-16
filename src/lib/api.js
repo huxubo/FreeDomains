@@ -77,9 +77,10 @@ export const subdomainAPI = {
     /**
      * Check if a subdomain name is available
      * @param {string} name - The subdomain name to check
+     * @param {string} domain - The root domain (indevs.in or sryze.cc)
      */
-    checkAvailability: async (name) => {
-        return apiRequest(`/subdomains/check/${name}`);
+    checkAvailability: async (name, domain = 'indevs.in') => {
+        return apiRequest(`/subdomains/check/${name}?domain=${encodeURIComponent(domain)}`);
     },
 
     /**

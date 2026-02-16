@@ -112,7 +112,7 @@ export default function Overview() {
                     <QuickAction
                         icon={Plus}
                         label="Register New Domain"
-                        description="Claim a new domain under indevs.in"
+                        description="Claim a new domain (indevs.in or sryze.cc)"
                         to="/register"
                         variant="primary"
                     />

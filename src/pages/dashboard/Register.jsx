@@ -13,6 +13,7 @@ import { Turnstile } from '@marsidev/react-turnstile';
 
 export default function Register() {
     const [domain, setDomain] = useState("");
+    const [rootDomain, setRootDomain] = useState("indevs.in");
     const [isChecking, setIsChecking] = useState(false);
     const [isAvailable, setIsAvailable] = useState(null);
     const [errorMsg, setErrorMsg] = useState("");
@@ -20,6 +21,8 @@ export default function Register() {
     const [acceptedToS, setAcceptedToS] = useState(false);
     const [captchaToken, setCaptchaToken] = useState(null);
     const captchaRef = useRef(null);
+
+    const availableDomains = ["indevs.in", "sryze.cc"];
 
     const { subdomains, refresh } = useDashboard();
     const { user, checkAuth } = useAuth();
@@ -81,17 +84,18 @@ export default function Register() {
             return;
         }
 
-        // Check if already owned
-        const alreadyOwned = subdomains.some(s => s.name === domainLower);
+        // Check if already owned (on the same root domain)
+        const alreadyOwned = subdomains.some(s => s.name === domainLower && (s.domain || 'indevs.in') === rootDomain);
         if (alreadyOwned) {
-            setErrorMsg("You already own this domain");
+            setErrorMsg(`You already own this subdomain on ${rootDomain}`);
             setIsAvailable(false);
             return;
         }
 
         setIsChecking(true);
         try {
-            const response = await subdomainAPI.checkAvailability(domainLower);
+            // Updated API call to check specific root domain
+            const response = await subdomainAPI.checkAvailability(domainLower, rootDomain);
             if (response.available) {
                 setIsAvailable(true);
                 setErrorMsg("");
@@ -105,7 +109,7 @@ export default function Register() {
         } finally {
             setIsChecking(false);
         }
-    }, [domain, subdomains]);
+    }, [domain, rootDomain, subdomains]);
 
     useEffect(() => {
         if (!domain || domain.length < 3) {
@@ -119,7 +123,7 @@ export default function Register() {
         }, 500);
 
         return () => clearTimeout(timeoutId);
-    }, [domain, checkAvailability]);
+    }, [domain, rootDomain, checkAvailability]);
 
     const handleRegister = async () => {
         if (!isAvailable) {
@@ -152,14 +156,30 @@ export default function Register() {
         setIsSubmitting(true);
         try {
             const domainLower = domain.toLowerCase().trim();
+
+            // Check if sryze.cc requires GitHub verification
+            if (rootDomain === 'sryze.cc' && !user.githubVerified) {
+                toast({
+                    title: "GitHub Verification Required ⭐",
+                    description: "You need to complete GitHub verification to register sryze.cc domains. Redirecting...",
+                    className: "bg-yellow-50 border-yellow-200 text-yellow-900"
+                });
+
+                setTimeout(() => {
+                    window.location.href = '/dashboard/verify-github';
+                }, 2000);
+                return;
+            }
+
             await subdomainAPI.create({
                 name: domainLower,
+                domain: rootDomain,
                 captchaToken
             });
 
             toast({
                 title: "Domain Registered Successfully! 🎉",
-                description: `${domainLower}.indevs.in is now yours for 1 year! You can configure DNS settings from your dashboard.`,
+                description: `${domainLower}.${rootDomain} is now yours for 1 year! You can configure DNS settings from your dashboard.`,
                 className: "bg-[#e6f4ea] border-green-200 text-green-900"
             });
 
@@ -188,7 +208,7 @@ export default function Register() {
                     Claim Your Domain
                 </h1>
                 <p className="text-lg text-[#4A4A4A]">
-                    Get your unique .indevs.in subdomain in seconds
+                    Get your unique subdomain in seconds
                 </p>
             </div>
 
@@ -267,8 +287,16 @@ export default function Register() {
                                     <XCircle className="w-5 h-5 text-red-600 absolute right-3 top-1/2 -translate-y-1/2" />
                                 )}
                             </div>
-                            <div className="bg-gray-100 border-2 border-t sm:border-t sm:border-l-0 border-[#E5E3DF] rounded-b-lg rounded-t-none sm:rounded-r-lg sm:rounded-l-none px-4 sm:px-6 flex items-center justify-center sm:justify-start h-12 sm:h-14 -mt-[1px] sm:mt-0">
-                                <span className="text-xl font-bold text-[#1A1A1A] whitespace-nowrap">.indevs.in</span>
+                            <div className="bg-gray-100 border-2 border-t sm:border-t sm:border-l-0 border-[#E5E3DF] rounded-b-lg rounded-t-none sm:rounded-r-lg sm:rounded-l-none px-2 flex items-center justify-center sm:justify-start h-12 sm:h-14 -mt-[1px] sm:mt-0 min-w-[140px]">
+                                <select
+                                    value={rootDomain}
+                                    onChange={(e) => setRootDomain(e.target.value)}
+                                    className="bg-transparent text-xl font-bold text-[#1A1A1A] focus:outline-none cursor-pointer w-full text-center sm:text-left p-1"
+                                >
+                                    {availableDomains.map(d => (
+                                        <option key={d} value={d}>.{d}</option>
+                                    ))}
+                                </select>
                             </div>
                         </div>
 
@@ -292,7 +320,7 @@ export default function Register() {
                                 <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                                 <div>
                                     <p className="text-sm font-bold text-green-900 mb-1">
-                                        ✨ {domain}.indevs.in is available!
+                                        ✨ {domain}.{rootDomain} is available!
                                     </p>
                                     <p className="text-xs text-green-700">
                                         This domain is yours for the taking. Accept the terms below to claim it.

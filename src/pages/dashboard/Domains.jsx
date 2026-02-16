@@ -71,7 +71,7 @@ export default function MyDomains() {
 
             toast({
                 title: "Domain Renewed Successfully! 🎉",
-                description: `${domain.name}.indevs.in has been extended for another year. New expiry date will be shown on your dashboard.`,
+                description: `${domain.name}.${domain.domain || 'indevs.in'} has been extended for another year. New expiry date will be shown on your dashboard.`,
                 className: "bg-[#e6f4ea] border-green-200 text-green-900"
             });
 
@@ -195,7 +195,7 @@ export default function MyDomains() {
                                         <div className="font-bold text-[#1A1A1A] text-base sm:text-lg flex items-start gap-2 max-w-full">
                                             <Globe className="w-4 h-4 flex-shrink-0 mt-1.5" />
                                             <span className="break-words">
-                                                {domain.name}.indevs.in
+                                                {domain.name}.{domain.domain || 'indevs.in'}
                                             </span>
                                         </div>
                                         <span className="text-xs text-[#888] font-mono mt-1 truncate max-w-full block" title={`ID: ${domain._id}`}>ID: {domain._id}</span>
@@ -307,7 +307,7 @@ export default function MyDomains() {
                     <DialogHeader>
                         <DialogTitle className="text-2xl font-bold flex items-center gap-2">
                             <Globe className="w-6 h-6" />
-                            Manage {selectedDomain?.name}.indevs.in
+                            Manage {selectedDomain?.name}.{selectedDomain?.domain || 'indevs.in'}
                         </DialogTitle>
                         <DialogDescription>Configure DNS records, security, and usage log.</DialogDescription>
                     </DialogHeader>
@@ -343,7 +343,7 @@ export default function MyDomains() {
                             <div className="border-2 border-[#E5E3DF] rounded-xl p-5 space-y-4 hover:border-[#aaa] transition-colors focus-within:border-[#1A1A1A]">
                                 <p className="text-sm text-[#4A4A4A]">
                                     Custom nameservers allow you to manage your DNS records via external providers.
-                                    Leave blank to use default <b>indevs.in</b> nameservers.
+                                    Leave blank to use default <b>Stackryze</b> nameservers.
                                 </p>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="space-y-2">
@@ -448,7 +448,7 @@ export default function MyDomains() {
                         <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                         <AlertDialogDescription>
                             This action cannot be undone. Your deletion request for
-                            <strong className="font-bold"> {selectedDomain?.name}.indevs.in</strong> will be submitted for admin review.
+                            <strong className="font-bold"> {selectedDomain?.name}.{selectedDomain?.domain || 'indevs.in'}</strong> will be submitted for admin review.
                             The domain will remain active until approved.
                         </AlertDialogDescription>
                     </AlertDialogHeader>
