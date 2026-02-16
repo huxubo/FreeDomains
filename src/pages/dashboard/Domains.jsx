@@ -193,11 +193,11 @@ export default function MyDomains() {
 
             {/* Domain Usage Indicator */}
             <div className="mb-6 border-2 rounded-xl p-5 bg-blue-50 border-blue-200">
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                         <Info className="w-5 h-5 text-blue-600" />
                         <span className="font-bold text-sm text-blue-900">
-                            Domain Usage: {subdomains?.length || 0} / {user?.domainLimit || 5}
+                            Domain Limits
                         </span>
                     </div>
                     <Link to="/register">
@@ -208,22 +208,47 @@ export default function MyDomains() {
                     </Link>
                 </div>
 
-                {/* Progress Bar */}
-                <div className="w-full bg-white rounded-full h-2.5 mb-2">
-                    <div
-                        className={`h-2.5 rounded-full transition-all ${((subdomains?.length || 0) / (user?.domainLimit || 5) * 100) >= 100
-                            ? 'bg-red-600'
-                            : ((subdomains?.length || 0) / (user?.domainLimit || 5) * 100) >= 80
-                                ? 'bg-amber-500'
-                                : 'bg-green-600'
-                            }`}
-                        style={{ width: `${Math.min(((subdomains?.length || 0) / (user?.domainLimit || 5) * 100), 100)}%` }}
-                    ></div>
+                {/* Indevs.in Usage */}
+                <div className="mb-4">
+                    <div className="flex items-center justify-between mb-1">
+                        <span className="text-xs font-semibold text-blue-900">indevs.in Domains</span>
+                        <span className="text-xs text-blue-800">
+                            {subdomains?.filter(s => s.domain === 'indevs.in').length || 0} / {user?.domainLimit || 5}
+                        </span>
+                    </div>
+                    <div className="w-full bg-white rounded-full h-2">
+                        <div
+                            className={`h-2 rounded-full transition-all ${((subdomains?.filter(s => s.domain === 'indevs.in').length || 0) / (user?.domainLimit || 5) * 100) >= 100
+                                    ? 'bg-red-600'
+                                    : ((subdomains?.filter(s => s.domain === 'indevs.in').length || 0) / (user?.domainLimit || 5) * 100) >= 80
+                                        ? 'bg-amber-500'
+                                        : 'bg-blue-600'
+                                }`}
+                            style={{ width: `${Math.min(((subdomains?.filter(s => s.domain === 'indevs.in').length || 0) / (user?.domainLimit || 5) * 100), 100)}%` }}
+                        ></div>
+                    </div>
                 </div>
 
-                <p className="text-xs text-blue-800">
-                    {(user?.domainLimit || 5) - (subdomains?.length || 0)} {((user?.domainLimit || 5) - (subdomains?.length || 0)) === 1 ? 'domain' : 'domains'} remaining
-                </p>
+                {/* Sryze.cc Usage */}
+                <div>
+                    <div className="flex items-center justify-between mb-1">
+                        <span className="text-xs font-semibold text-blue-900">sryze.cc Domains</span>
+                        <span className="text-xs text-blue-800">
+                            {subdomains?.filter(s => s.domain === 'sryze.cc').length || 0} / {user?.sryzeDomainsLimit || 1}
+                        </span>
+                    </div>
+                    <div className="w-full bg-white rounded-full h-2">
+                        <div
+                            className={`h-2 rounded-full transition-all ${((subdomains?.filter(s => s.domain === 'sryze.cc').length || 0) / (user?.sryzeDomainsLimit || 1) * 100) >= 100
+                                    ? 'bg-red-600'
+                                    : ((subdomains?.filter(s => s.domain === 'sryze.cc').length || 0) / (user?.sryzeDomainsLimit || 1) * 100) >= 80
+                                        ? 'bg-amber-500'
+                                        : 'bg-purple-600'
+                                }`}
+                            style={{ width: `${Math.min(((subdomains?.filter(s => s.domain === 'sryze.cc').length || 0) / (user?.sryzeDomainsLimit || 1) * 100), 100)}%` }}
+                        ></div>
+                    </div>
+                </div>
             </div>
 
             <div className="bg-white rounded-xl border-2 border-[#E5E3DF] overflow-hidden shadow-sm">
