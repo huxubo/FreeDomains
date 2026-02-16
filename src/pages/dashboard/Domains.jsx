@@ -5,7 +5,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Settings as SettingsIcon, Trash, RefreshCw, X, ChevronRight, Globe, AlertCircle, Clock, Plus, Info } from "lucide-react";
+import { Settings as SettingsIcon, Trash, RefreshCw, X, ChevronRight, Globe, AlertCircle, Clock, Plus, Info, Shield } from "lucide-react";
 import { useDashboard } from "@/context/dashboard-context";
 import { useAuth } from "@/context/auth-context";
 import { useToast } from "@/hooks/use-toast";
@@ -21,6 +21,26 @@ export default function MyDomains() {
     const [deleteId, setDeleteId] = useState(null);
     const [isDeleting, setIsDeleting] = useState(false);
     const [isRenewing, setIsRenewing] = useState(false);
+    const [pendingVerification, setPendingVerification] = useState(null);
+
+    // Fetch pending GitHub verification
+    useEffect(() => {
+        const fetchVerification = async () => {
+            try {
+                const response = await fetch('/api/github/verification-status', { credentials: 'include' });
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.verification && data.verification.status === 'pending') {
+                        setPendingVerification(data.verification);
+                    }
+                }
+            } catch (error) {
+                // Silent fail - not critical
+                console.error('Failed to fetch verification status:', error);
+            }
+        };
+        fetchVerification();
+    }, []);
 
     // Refresh user data on mount to get latest domain limit
     useEffect(() => {
@@ -134,6 +154,38 @@ export default function MyDomains() {
                     {loading ? 'Refreshing...' : 'Refresh List'}
                 </Button>
             </div>
+
+            {/* Pending GitHub Verification Banner */}
+            {pendingVerification && (
+                <div className="mb-6 border-2 rounded-xl p-5 bg-yellow-50 border-yellow-300">
+                    <div className="flex items-start gap-4">
+                        <Shield className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" />
+                        <div className="flex-1">
+                            <h3 className="font-bold text-yellow-900 text-lg mb-1">
+                                GitHub Verification Pending
+                            </h3>
+                            <p className="text-sm text-yellow-800 mb-3">
+                                Your GitHub verification for <strong>{pendingVerification.requestedDomain}.sryze.cc</strong> is being reviewed by our team.
+                            </p>
+                            <div className="bg-white/50 rounded-lg p-3 text-xs space-y-1">
+                                <div className="flex items-center gap-2">
+                                    <Clock className="w-4 h-4 text-yellow-600" />
+                                    <span className="font-semibold text-yellow-900">Status:</span>
+                                    <span className="text-yellow-800">Awaiting Admin Approval</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <Globe className="w-4 h-4 text-yellow-600" />
+                                    <span className="font-semibold text-yellow-900">Domain:</span>
+                                    <span className="font-mono text-yellow-800">{pendingVerification.requestedDomain}.sryze.cc (Reserved)</span>
+                                </div>
+                            </div>
+                            <p className="text-xs text-yellow-700 mt-3">
+                                Once approved, your domain will be automatically created and appear here!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* Domain Usage Indicator */}
             <div className="mb-6 border-2 rounded-xl p-5 bg-blue-50 border-blue-200">
