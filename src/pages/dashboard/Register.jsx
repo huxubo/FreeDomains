@@ -166,7 +166,7 @@ export default function Register() {
                 });
 
                 setTimeout(() => {
-                    window.location.href = '/dashboard/verify-github';
+                    window.location.href = `/dashboard/verify-github?domain=${encodeURIComponent(domainLower)}`;
                 }, 2000);
                 return;
             }

@@ -19,6 +19,13 @@ export default function VerifyGitHub() {
     const REPO_URL = 'https://github.com/stackryze/FreeDomains';
 
     useEffect(() => {
+        // Auto-fill domain from URL param (when user clicks "claim" from Register page)
+        const params = new URLSearchParams(window.location.search);
+        const domainParam = params.get('domain');
+        if (domainParam) {
+            setRequestedDomain(domainParam.toLowerCase());
+        }
+
         fetchVerificationStatus();
     }, []);
 
@@ -153,9 +160,9 @@ export default function VerifyGitHub() {
                                     type="text"
                                     value={requestedDomain}
                                     onChange={(e) => setRequestedDomain(e.target.value.toLowerCase())}
-                                    placeholder="myproject"
+                                    placeholder={user?.username || "myproject"}
                                     className="flex-1 min-w-0 px-4 py-2.5 border-2 border-[#E5E3DF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E63946] focus:border-transparent transition-all"
-                                    pattern="[a-z0-9-]+"
+                                    pattern="[a-z0-9\-]+"
                                     minLength="3"
                                     required
                                 />
