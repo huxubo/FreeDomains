@@ -11,6 +11,8 @@ import { useAuth } from "@/context/auth-context";
 import { useToast } from "@/hooks/use-toast";
 import { subdomainAPI } from "@/lib/api";
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function MyDomains() {
     const { subdomains, setSubdomains, refresh, loading } = useDashboard();
     const { user, checkAuth } = useAuth();
@@ -27,7 +29,9 @@ export default function MyDomains() {
     useEffect(() => {
         const fetchVerification = async () => {
             try {
-                const response = await fetch('/api/github/verification-status', { credentials: 'include' });
+                const response = await fetch(`${API_BASE}/github/verification-status`, {
+                    credentials: 'include'
+                });
                 if (response.ok) {
                     const data = await response.json();
                     if (data.verification && data.verification.status === 'pending') {
