@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, Clock, Star, FileText, AlertTriangle, ExternalLink, Copy, CheckCheck } from 'lucide-react';
 import { useAuth } from '../../context/auth-context';
 import { useToast } from '../../hooks/use-toast';
-import api from '../../lib/api';
+import { subdomainAPI as api } from '../../lib/api';
 
 export default function VerifyGitHub() {
     const { user } = useAuth();
