@@ -247,7 +247,19 @@ export default function VerifyGitHub() {
                                     3
                                 </div>
                                 <div className="flex-1">
-                                    <p className="font-semibold">Copy and paste the template below into the issue</p>
+                                    <p className="font-semibold">Set the issue title</p>
+                                    <p className="text-sm text-gray-600 mt-1">
+                                        Title: <span className="font-mono bg-gray-100 px-2 py-1 rounded">Domain Verification Request - {verificationData.requestedDomain}</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="flex gap-3">
+                                <div className="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                                    4
+                                </div>
+                                <div className="flex-1">
+                                    <p className="font-semibold">Copy and paste the template below into the issue body</p>
                                 </div>
                             </div>
                         </div>
