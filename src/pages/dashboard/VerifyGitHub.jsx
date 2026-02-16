@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, Clock, Star, FileText, AlertTriangle, ExternalLink, Copy, CheckCheck } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/auth-context';
 import { useToast } from '../../hooks/use-toast';
 import api from '../../lib/api';
 

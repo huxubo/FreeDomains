@@ -28,6 +28,7 @@ import { Donate } from './pages/Donate';
 import DomainDetail from './pages/dashboard/DomainDetail';
 import Help from './pages/dashboard/Help';
 import History from './pages/dashboard/History';
+import VerifyGitHub from './pages/dashboard/VerifyGitHub';
 
 // Placeholder pages
 const Docs = () => <div className="p-10 min-h-screen bg-[#FFF8F0] pt-32"><h1 className="text-4xl font-bold">Docs (Coming Soon)</h1></div>;
@@ -105,6 +106,7 @@ function App() {
             <Route path="/settings" element={<Settings />} />
             <Route path="/profile" element={<Settings />} />
             <Route path="/help" element={<Help />} />
+            <Route path="/dashboard/verify-github" element={<VerifyGitHub />} />
           </Route>
 
 
