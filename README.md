@@ -1,10 +1,10 @@
-# 🌐 Claim yourname.indevs.in — Powered by Stackryze Domains
+# 🌐 Claim Free Domains — Powered by Stackryze Domains
 
 **Join our Discord:** https://discord.gg/wr7s97cfM7
 
 ---
 
-**Stackryze Domains** runs **indevs.in**, a free managed subdomain service for developers, students, and open-source communities.
+**Stackryze Domains** runs **indevs.in** & **sryze.cc**, a free managed subdomain service for developers, students, and open-source communities.
 
 Claim a domain and point it to any hosting provider or your own infrastructure. You get full ownership and complete control.
 
@@ -12,7 +12,7 @@ Claim a domain and point it to any hosting provider or your own infrastructure. 
 
 ---
 
-## Why indevs.in?
+## Why US?
 
 Our goal is simple: remove cost and complexity from getting online.
 
