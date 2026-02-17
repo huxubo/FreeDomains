@@ -26,6 +26,7 @@ Our goal is simple: remove cost and complexity from getting online.
 ## 🌍 Available Domains
 
 - **.indevs.in**
+- **.sryze.cc**
 
 *More extensions coming soon.*
 
